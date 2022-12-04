@@ -32,7 +32,7 @@ jobs:
         uses: battila7/get-version-action@v2
       
       - name: pack the proejct
-        run: dotnet pack ${{env.PROJECT_PATH}} --no-restore --no-build -c release -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --include-symbols --output ${{ env.OUTPUT_PACKAGE }}
+        run: dotnet pack *.csproj --no-restore --no-build -c release -p:PackageVersion=${{ steps.version.outputs.version-without-v }} --include-symbols --output ${{ env.OUTPUT_PACKAGE }}
        
       - name: push package
         run: dotnet nuget ${{ env.OUTPUT_PACKAGE }}\*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_KEY}} --skip-duplicate
