@@ -5,9 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Title>Data Access</Title>
-    <Description>A single abstraction to access mongoDb databases</Description>
+    <Description>A sinple abstraction to access mongoDb databases</Description>
     <Authors>Carlos Encine</Authors>
-    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
