@@ -63,7 +63,7 @@ namespace EncineCarlos.DataAccess.MongoDb
             var filter = Builders<TEntity>.Filter.Eq("_id", id);
             var firstElement = documentChanges.FirstOrDefault();
 
-            if(getSingleAsync(i => i.Id.Equals(id)) != null)
+            if(GetSingleAsync(i => i.Id.Equals(id)) != null)
             {
                 var updates = Builders<TEntity>.Update.Set(firstElement.Name, firstElement.Value);
 
