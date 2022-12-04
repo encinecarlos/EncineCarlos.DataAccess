@@ -50,7 +50,7 @@ namespace EncineCarlos.DataAccess.MongoDb
         public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate) 
             => await ((await Collection.FindAsync(predicate)).ToListAsync());
 
-        public async Task<TEntity> getSingleAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> predicate)
             => await ((await Collection.FindAsync(predicate)).FirstOrDefaultAsync());
 
         public async Task RemoveAsync(TId id)
