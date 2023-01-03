@@ -11,6 +11,7 @@ namespace EncineCarlos.DataAccess.MongoDb
     {
         private MongoClient Client { get; }
         private IMongoCollection<TEntity> Collection { get; }
+        
         public MongoDbClient(IOptions<MongoDbSettings> config)
         {
             ArgumentNullException.ThrowIfNull(config.Value);
@@ -22,11 +23,11 @@ namespace EncineCarlos.DataAccess.MongoDb
                 BsonClassMap.RegisterClassMap<TEntity>(cm => 
                 {
                     cm.AutoMap();
-                    cm.MapIdMember(x => x.Id).SetIdGenerator(StringObjectIdGenerator.Instance);
                 });
-                MongoUrl mongoUrl = new MongoUrl(config.Value.ConnectionString);
-                var mongoClientsettings = MongoClientSettings.FromUrl(mongoUrl);
-                Client = new MongoClient(mongoClientsettings);
+                
+                var mongoUrl = new MongoUrl(config.Value.ConnectionString);
+                var mongoClientSettings = MongoClientSettings.FromUrl(mongoUrl);
+                Client = new MongoClient(mongoClientSettings);
 
                 Collection = Client.GetDatabase(config.Value.Database).GetCollection<TEntity>(name);
             }
